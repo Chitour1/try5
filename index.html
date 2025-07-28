@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تمرين اللغة الإنجليزية</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- ربط ملف التصميم الخارجي -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <!-- Start Screen -->
+        <div id="start-screen" class="screen">
+            <h1 class="highlight-text">تمرين الإنجليزية</h1>
+            <p>اختر "ابدأ الدروس" لتعلّم كلمات جديدة، أو اذهب إلى "مركز المراجعة" لتمرين الكلمات التي تعلمتها.</p>
+            <div id="start-screen-buttons">
+                <button id="go-to-level-selection-btn" class="icon-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25" /></svg>
+                    <span>ابدأ الدروس</span>
+                </button>
+                <button id="go-to-review-center-btn" class="icon-btn">
+                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0h18M12 15.75h.008v.008H12v-.008Z" /></svg>
+                    <span>مركز المراجعة</span>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Review Center Screen -->
+        <div id="review-center-screen" class="screen scrollable-screen hidden">
+            <div class="back-btn" data-target="start">→</div>
+            <h2 class="screen-title highlight-text">مركز المراجعة</h2>
+            <div id="review-list-container" class="list-container"></div>
+            <button id="start-global-review-btn" class="btn">ابدأ المراجعة</button>
+        </div>
+
+        <!-- Level Selection Screen -->
+        <div id="level-selection-screen" class="screen hidden">
+            <div class="back-btn" data-target="start">→</div>
+            <h2 class="screen-title highlight-text">اختر المستوى</h2>
+            <div id="level-list"></div>
+        </div>
+
+        <!-- Lesson Selection Screen -->
+        <div id="lesson-selection-screen" class="screen hidden">
+            <div class="back-btn" data-target="levelSelection">→</div>
+            <h2 class="screen-title highlight-text">اختر الدرس</h2>
+            <div id="lesson-list"></div>
+        </div>
+
+        <!-- Lesson Screen -->
+        <div id="lesson-screen" class="screen scrollable-screen hidden">
+            <div class="back-btn" data-target="lessonSelection">→</div>
+            <h2 id="lesson-view-title" class="screen-title highlight-text"></h2>
+            <div id="lesson-sentence-list" class="list-container"></div>
+            <button id="start-lesson-practice-btn" class="btn">ابدأ تمرين الدرس</button>
+        </div>
+        
+        <!-- Practice Screen -->
+        <div id="practice-screen" class="screen hidden">
+            <div class="back-btn" id="back-to-previous-screen">→</div>
+            <h2 class="screen-title highlight-text">التمرين</h2>
+            <div id="practice-banner">
+                <div id="practice-speaker-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.114 5.636a9 9 0 0 1 0 12.728M16.463 8.288a5.25 5.25 0 0 1 0 7.424M6.75 8.25l4.72-4.72a.75.75 0 0 1 1.28.53v15.88a.75.75 0 0 1-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.01 9.01 0 0 1 2.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75Z" /></svg>
+                </div>
+                <div id="practice-context"></div>
+                <div id="practice-text-ar"></div>
+                <div id="practice-text-en" class="highlight-text"></div>
+                <div id="pronunciation-container">
+                    <div id="practice-pronunciation-en" class="pronunciation-text"></div>
+                    <div id="practice-pronunciation-ar" class="pronunciation-text"></div>
+                </div>
+                <div id="practice-tip-container"></div>
+            </div>
+            <div id="practice-controls">
+                <div id="practice-counter">0 / 0</div>
+            </div>
+        </div>
+
+        <!-- Writing Exercise Screen -->
+        <div id="writing-exercise-screen" class="screen hidden">
+            <h2 class="screen-title highlight-text">تمرين كتابي</h2>
+            <p>لترسيخ الكلمة، حاول كتابتها من ذاكرتك.</p>
+            <input type="text" id="writing-exercise-input" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+            <div id="writing-exercise-feedback"></div>
+            <div id="writing-exercise-buttons">
+                <button id="writing-exercise-check-btn" class="btn">تحقق</button>
+                <button id="writing-exercise-skip-btn" class="btn secondary">تخطي</button>
+            </div>
+        </div>
+
+        <!-- Session Complete Screen -->
+        <div id="session-complete-screen" class="screen hidden">
+             <h2 class="screen-title highlight-text">ممتاز!</h2>
+             <p>لقد أتممت الجلسة. عمل رائع!</p>
+             <button id="back-to-main-from-complete" class="btn">العودة للقائمة الرئيسية</button>
+        </div>
+    </div>
+
+    <!-- ربط ملف الجافاسكريبت الرئيسي (نوع module) -->
+    <script src="app.js" type="module"></script>
+</body>
+</html>
